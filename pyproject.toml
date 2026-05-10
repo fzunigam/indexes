@@ -5,7 +5,29 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "financial-indexes"
 version = "0.1.0"
+description = "A lightweight utility to scrape and retrieve financial index constituents, starting with the S&P 500."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Fernando Zuniga", email = ""},
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial",
+    "Intended Audience :: Developers",
+]
+keywords = ["finance", "sp500", "stock-market", "scraping", "indexes"]
 dependencies = [
     "requests",
-    "beautifulsoup4"
+    "beautifulsoup4",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/fzunigam/indexes"
+"Bug Tracker" = "https://github.com/fzunigam/indexes/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
