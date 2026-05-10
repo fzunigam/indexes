@@ -1,14 +1,32 @@
+from .scraper import fetch_and_parse_sp500
+
 SUPPORTED_FIELDS = {'symbol', 'name', 'sector', 'sub_industry', 'date_added', 'cik', 'founded'}
+_CACHE = {}
 
 def get_sp500(return_type='list', fields=None):
     if return_type not in ('list', 'dict'):
         raise ValueError("Invalid return_type. Must be 'list' or 'dict'.")
-    
     if fields is None:
         fields = ['symbol']
-        
     for field in fields:
         if field not in SUPPORTED_FIELDS:
             raise ValueError(f"Unsupported field: {field}")
             
-    return []
+    if 'sp500' not in _CACHE:
+        _CACHE['sp500'] = fetch_and_parse_sp500()
+        
+    data = _CACHE['sp500']
+    
+    if return_type == 'dict':
+        return {
+            row['symbol']: {k: v for k, v in row.items() if k in fields}
+            for row in data
+        }
+    
+    if return_type == 'list':
+        if len(fields) == 1 and fields[0] == 'symbol':
+            return [row['symbol'] for row in data]
+        return [
+            {k: v for k, v in row.items() if k in fields or k == 'symbol'}
+            for row in data
+        ]
