@@ -1,5 +1,5 @@
 import pytest
-from indexes.api import get_sp500
+from indexes.api import get_sp500, get_nasdaq100
 
 def test_invalid_return_type():
     with pytest.raises(ValueError, match="Invalid return_type"):
@@ -16,5 +16,20 @@ def test_get_sp500_list():
 
 def test_get_sp500_dict():
     res = get_sp500(return_type='dict', fields=['name'])
+    assert 'AAPL' in res
+    assert 'name' in res['AAPL']
+
+def test_invalid_fields_nasdaq100():
+    with pytest.raises(ValueError, match="Unsupported field"):
+        get_nasdaq100(fields=['symbol', 'fake_field'])
+
+def test_get_nasdaq100_list():
+    res = get_nasdaq100(return_type='list', fields=['symbol', 'industry'])
+    assert len(res) > 90
+    assert isinstance(res[0], dict)
+    assert 'industry' in res[0]
+
+def test_get_nasdaq100_dict():
+    res = get_nasdaq100(return_type='dict', fields=['name'])
     assert 'AAPL' in res
     assert 'name' in res['AAPL']
