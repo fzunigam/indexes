@@ -1,14 +1,14 @@
-# Financial Indexes
+# Indexes
 
 A lightweight, professional Python utility to scrape and retrieve financial index constituents, starting with the S&P 500.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![PyPI version](https://img.shields.io/pypi/v/financial-indexes.svg)](https://pypi.org/project/financial-indexes/)
-[![Python versions](https://img.shields.io/pypi/pyversions/financial-indexes.svg)](https://pypi.org/project/financial-indexes/)
+[![PyPI version](https://img.shields.io/pypi/v/indexes.svg)](https://pypi.org/project/indexes/)
+[![Python versions](https://img.shields.io/pypi/pyversions/indexes.svg)](https://pypi.org/project/indexes/)
 
 ## About
 
-`financial-indexes` provides a simple, cached interface to access up-to-date data for major financial indexes. It currently supports fetching S&P 500 constituents directly from reliable public sources, providing essential metadata like sector, sub-industry, and CIK.
+`indexes` provides a simple, cached interface to access up-to-date data for major financial indexes. It currently supports fetching S&P 500 constituents directly from reliable public sources, providing essential metadata like sector, sub-industry, and CIK.
 
 ## Features
 
@@ -21,7 +21,7 @@ A lightweight, professional Python utility to scrape and retrieve financial inde
 ## Installation
 
 ```bash
-pip install financial-indexes
+pip install indexes
 ```
 
 ### Requirements

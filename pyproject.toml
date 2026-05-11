@@ -1,9 +1,8 @@
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
-
 [project]
-name = "financial-indexes"
+name = "indexes"
 version = "0.1.0"
 description = "A lightweight utility to scrape and retrieve financial index constituents, starting with the S&P 500."
 readme = "README.md"
