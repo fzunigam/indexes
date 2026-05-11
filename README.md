@@ -1,6 +1,6 @@
-# Indexes: A Lightweight S&P 500 Scraper & Financial Data API
+# Indexes: A Lightweight S&P 500 & Nasdaq-100 Scraper
 
-`indexes` is a professional Python utility designed to **scrape and retrieve financial index constituents**, providing developers with a clean, programmatic interface to access real-time market data. Starting with the **S&P 500**, it simplifies the process of extracting stock market components for financial analysis and algorithmic trading.
+`indexes` is a professional Python utility designed to **scrape and retrieve financial index constituents**, providing developers with a clean, programmatic interface to access real-time market data. It simplifies the process of extracting stock market components from the **S&P 500** and **Nasdaq-100** for financial analysis and algorithmic trading.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PyPI version](https://img.shields.io/pypi/v/indexes.svg)](https://pypi.org/project/indexes/)
@@ -9,13 +9,13 @@
 
 ## Why use Indexes?
 
-For financial analysts and Python developers, keeping an up-to-date list of **S&P 500 constituents** can be tedious. `indexes` provides a simple, cached interface to fetch this data from reliable public sources (like Wikipedia), returning essential metadata such as **Sector, Sub-Industry, CIK, and Founded Date**.
+For financial analysts and Python developers, keeping up-to-date lists of **S&P 500 and Nasdaq-100 constituents** can be tedious. `indexes` provides a simple, cached interface to fetch this data from reliable public sources (like Wikipedia), returning essential metadata such as **Sector, Industry, CIK, and more**.
 
 ## Key Features
 
-- **Efficient S&P 500 Scraper**: Get up-to-date SPX constituents in seconds.
+- **Efficient Scrapers**: Get up-to-date S&P 500 and Nasdaq-100 constituents in seconds.
 - **Flexible Data Formats**: Retrieve results as a Python `list` or a `dict` keyed by symbol.
-- **Granular Field Selection**: Extract only what you need (symbol, name, sector, sub-industry, CIK, etc.).
+- **Granular Field Selection**: Extract only what you need.
 - **Smart Caching**: Minimizes network requests by caching data within the same execution session.
 - **Minimalist Design**: Zero-config, lightweight, and easy to integrate into larger financial pipelines.
 
@@ -36,22 +36,20 @@ pip install indexes
 ## Quick Start & Usage
 
 ```python
-from indexes import get_sp500
+from indexes import get_sp500, get_nasdaq100
 
 # Get a simple list of all S&P 500 ticker symbols
-symbols = get_sp500()
-print(f"Total S&P 500 companies: {len(symbols)}")
+sp500_symbols = get_sp500()
 
-# Get detailed company data as a dictionary keyed by ticker symbol
-# Perfect for financial modeling and mapping
-sp500_details = get_sp500(
+# Get Nasdaq-100 details
+nasdaq_details = get_nasdaq100(
     return_type='dict', 
-    fields=['name', 'sector', 'sub_industry']
+    fields=['name', 'industry']
 )
 
-# Example: Accessing Apple Inc. metadata
-print(sp500_details['AAPL'])
-# Output: {'name': 'Apple Inc.', 'sector': 'Information Technology', 'sub_industry': 'Technology Hardware, Storage & Peripherals'}
+# Example: Accessing Apple Inc. metadata (present in both)
+print(nasdaq_details['AAPL'])
+# Output: {'name': 'Apple Inc.', 'industry': 'Technology'}
 
 # Get a list of dictionaries with custom fields
 data = get_sp500(return_type='list', fields=['name', 'sector', 'cik'])
@@ -60,12 +58,16 @@ data = get_sp500(return_type='list', fields=['name', 'sector', 'cik'])
 ## API Documentation
 
 ### `get_sp500(return_type='list', fields=None)`
-
-The primary entry point for fetching the S&P 500 index components.
-
+The entry point for fetching the S&P 500 index components.
 - **`return_type`** (str): `'list'` (default) or `'dict'`.
-- **`fields`** (list, optional): List of metadata fields to include. Defaults to `['symbol']`.
+- **`fields`** (list, optional): Defaults to `['symbol']`.
     - **Supported fields**: `symbol`, `name`, `sector`, `sub_industry`, `date_added`, `cik`, `founded`.
+
+### `get_nasdaq100(return_type='list', fields=None)`
+The entry point for fetching the Nasdaq-100 index components.
+- **`return_type`** (str): `'list'` (default) or `'dict'`.
+- **`fields`** (list, optional): Defaults to `['symbol']`.
+    - **Supported fields**: `symbol`, `name`, `industry`, `subsector`.
 
 ## Development and Contributions
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.2] - 2026-05-11
+### Added
+- `get_nasdaq100` API for retrieving Nasdaq-100 constituents.
+- Support for Nasdaq-100 specific fields: `symbol`, `name`, `industry`, `subsector`.
+
+## [0.1.1] - 2026-05-10
+### Fixed
+- Fixed bug in S&P 500 scraper handling of multiple table rows.
+
 ## [0.1.0] - 2026-05-10
 ### Added
 - Initial project setup and design for S&P 500 scraper.
