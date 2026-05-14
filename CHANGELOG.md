@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.3] - 2026-05-14
+### Added
+- `get_sp100` API for retrieving S&P 100 constituents.
+- Support for S&P 100 specific fields: `symbol`, `name`, `sector`.
+
 ## [0.1.2] - 2026-05-11
 ### Added
 - `get_nasdaq100` API for retrieving Nasdaq-100 constituents.

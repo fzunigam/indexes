@@ -1,6 +1,6 @@
-# Indexes: A Lightweight S&P 500 & Nasdaq-100 Scraper
+# Indexes: A Lightweight S&P 500, Nasdaq-100 & S&P 100 Scraper
 
-`indexes` is a professional Python utility designed to **scrape and retrieve financial index constituents**, providing developers with a clean, programmatic interface to access real-time market data. It simplifies the process of extracting stock market components from the **S&P 500** and **Nasdaq-100** for financial analysis and algorithmic trading.
+`indexes` is a professional Python utility designed to **scrape and retrieve financial index constituents**, providing developers with a clean, programmatic interface to access real-time market data. It simplifies the process of extracting stock market components from the **S&P 500**, **Nasdaq-100**, and **S&P 100** for financial analysis and algorithmic trading.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PyPI version](https://img.shields.io/pypi/v/indexes.svg)](https://pypi.org/project/indexes/)
@@ -9,11 +9,11 @@
 
 ## Why use Indexes?
 
-For financial analysts and Python developers, keeping up-to-date lists of **S&P 500 and Nasdaq-100 constituents** can be tedious. `indexes` provides a simple, cached interface to fetch this data from reliable public sources (like Wikipedia), returning essential metadata such as **Sector, Industry, CIK, and more**.
+For financial analysts and Python developers, keeping up-to-date lists of **S&P 500, Nasdaq-100 and S&P 100 constituents** can be tedious. `indexes` provides a simple, cached interface to fetch this data from reliable public sources (like Wikipedia), returning essential metadata such as **Sector, Industry, CIK, and more**.
 
 ## Key Features
 
-- **Efficient Scrapers**: Get up-to-date S&P 500 and Nasdaq-100 constituents in seconds.
+- **Efficient Scrapers**: Get up-to-date S&P 500, Nasdaq-100 and S&P 100 constituents in seconds.
 - **Flexible Data Formats**: Retrieve results as a Python `list` or a `dict` keyed by symbol.
 - **Granular Field Selection**: Extract only what you need.
 - **Smart Caching**: Minimizes network requests by caching data within the same execution session.
@@ -36,10 +36,13 @@ pip install indexes
 ## Quick Start & Usage
 
 ```python
-from indexes import get_sp500, get_nasdaq100
+from indexes import get_sp500, get_nasdaq100, get_sp100
 
 # Get a simple list of all S&P 500 ticker symbols
 sp500_symbols = get_sp500()
+
+# Get S&P 100 symbols
+sp100_symbols = get_sp100()
 
 # Get Nasdaq-100 details
 nasdaq_details = get_nasdaq100(
@@ -69,9 +72,15 @@ The entry point for fetching the Nasdaq-100 index components.
 - **`fields`** (list, optional): Defaults to `['symbol']`.
     - **Supported fields**: `symbol`, `name`, `industry`, `subsector`.
 
+### `get_sp100(return_type='list', fields=None)`
+The entry point for fetching the S&P 100 index components.
+- **`return_type`** (str): `'list'` (default) or `'dict'`.
+- **`fields`** (list, optional): Defaults to `['symbol']`.
+    - **Supported fields**: `symbol`, `name`, `sector`.
+
 ## Development and Contributions
 
-We welcome contributions from the community! Whether it's adding new indexes (Nasdaq 100, Dow Jones) or improving the scraper's robustness, feel free to submit a Pull Request.
+We welcome contributions from the community! Whether it's adding new indexes, new features or improving the scraper's robustness, feel free to submit a Pull Request.
 
 ### Local Setup
 
